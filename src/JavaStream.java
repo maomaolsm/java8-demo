@@ -9,6 +9,9 @@ import static java.util.stream.Collectors.toList;
 public class JavaStream {
     public static void main(String[] args) {
 
+        /**
+         * init data
+         */
         List<Dish> menu = Arrays.asList(
             new Dish("pork", false, 800, Dish.Type.MEAT),
             new Dish("beef", false, 700, Dish.Type.MEAT),
@@ -21,13 +24,47 @@ public class JavaStream {
             new Dish("salmon", false, 450, Dish.Type.FISH)
         );
 
-
+        /**
+         * 4.2
+         */
         List<String> threeHighCaloricDishNames =
             menu.stream()
                 .filter(d -> d.getCalories() > 300)
                 .map(Dish::getName)
                 .limit(3)
                 .collect(toList());
-        System.out.println(threeHighCaloricDishNames);
+        System.out.println("4.2 " + threeHighCaloricDishNames);
+
+        /**
+         * 4.4.1
+         * 中间操作
+         */
+        List<String> names =
+            menu.stream()
+                .filter(d -> {
+                    System.out.println("filtering " + d.getName());
+                    return d.getCalories() > 300;
+                })
+                .map(d -> {
+                    System.out.println("mapping " + d.getName());
+                    return d.getName();
+                })
+                .limit(3)
+                .collect(toList());
+        System.out.println("4.4.1 " + names);
+
+        /**
+         * 5.1.2
+         * distinct()
+         */
+        List<Integer> numbers = Arrays.asList(1, 2, 1, 3, 3, 2, 4);
+        numbers.stream()
+            .filter(i -> i % 2 == 0)
+            .distinct()
+            .forEach(System.out::println);
+
+        /**
+         *
+         */
     }
 }
