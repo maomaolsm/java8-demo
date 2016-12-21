@@ -6,7 +6,9 @@ data/
 *.iml
 *.ipr
 *.iws
-out/
+
+# out/
+
 *.log
 log/
 .DS_Store
