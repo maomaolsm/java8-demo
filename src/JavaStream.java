@@ -1,3 +1,5 @@
+import model.Dish;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -64,7 +66,22 @@ public class JavaStream {
             .forEach(System.out::println);
 
         /**
-         *
+         * 5.1.4
+         * 跳过元素(skip)
          */
+        List<Dish> dishes = menu.stream()
+            .filter(d -> d.getCalories() > 300)
+            .skip(2)
+            .collect(toList());
+
+        /**
+         * 5.4.1
+         * 归约(reduce)
+         */
+        List<Integer> members = Arrays.asList(1, 2, 3, 4);
+        int sum = members.stream()
+            .reduce(0, Integer::sum);//和下面的一行效果一样
+//            .reduce(0, (a, b) -> a + b);
+        System.out.println("5.4.1: " + sum);
     }
 }
