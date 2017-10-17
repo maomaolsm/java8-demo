@@ -56,7 +56,7 @@ public class JavaLocalDate {
         LocalDate date = LocalDate.of(2014, 3, 18);
         String s1 = date.format(DateTimeFormatter.BASIC_ISO_DATE);
         String s2 = date.format(DateTimeFormatter.ISO_LOCAL_DATE);
-        System.out.println(s1 + " and " + s2);
+        System.out.println("page255 " + s1 + " and " + s2 + " and " + date);//page255 20140318 and 2014-03-18 and 2014-03-18
 
         LocalDate date1 = LocalDate.parse("20140318", DateTimeFormatter.BASIC_ISO_DATE);
         LocalDate date2 = LocalDate.parse("2014-08-18", DateTimeFormatter.ISO_LOCAL_DATE);

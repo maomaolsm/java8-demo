@@ -95,6 +95,14 @@ public class JavaStream {
 
         /**
          * 6.3.2
+         * 统计每类菜的个数
+         */
+        Map<Dish.Type, Long> typesCount = menu.stream()
+                .collect(groupingBy(Dish::getType, counting()));
+        System.out.println("typesCount : " + typesCount);
+
+        /**
+         * 6.3.2
          * 查找菜单中热量最高的菜肴,按类型搜集
          */
         Map<Dish.Type, Optional<Dish>> mostCaloricByType =
@@ -104,8 +112,18 @@ public class JavaStream {
         System.out.println("mostCaloricByType : " + mostCaloricByType);
 
         /**
-         * 6.3.2 扩展
+         * 6.3.2
          * 查找菜单中热量之和,按类型搜集
+         */
+        Map<Dish.Type, Integer> totalCaloriesByType =
+                menu.stream()
+                        .collect(groupingBy(Dish::getType,
+                                summingInt(Dish::getCalories)));
+        System.out.println("totalCaloriesByType : " + totalCaloriesByType);
+
+        /**
+         * 6.3.2 扩展
+         * 查找菜单中热量之和,最大,最小,平均,统计个数,按类型搜集
          */
         Map<Dish.Type, IntSummaryStatistics> sumCaloricByType =
                 menu.stream()
